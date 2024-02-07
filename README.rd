@@ -8,3 +8,5 @@ Para iniciar o projeto, execute o seguinte comando no diretório raiz:
 
 ```bash
 docker-compose up -d
+
+
