@@ -6,6 +6,9 @@ services:
     container_name: app
     ports:
       - "3000:3000"
+    entrypoint: dockerize -wait tcp://mysql:3306 -timeout 30s sh -c "npm install && node index.js"
+    volumes:
+      - ./app:/usr/src/app
 
   nginx:
     image: nginx:latest
@@ -13,7 +16,6 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./app:/usr/src/app
       - ./nginx:/etc/nginx/conf.d
     restart: unless-stopped
 
